@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.formField1 = new System.Windows.Forms.TextBox();
+            this.eventName = new System.Windows.Forms.TextBox();
             this.Save = new System.Windows.Forms.Button();
             this.Close = new System.Windows.Forms.Button();
             this.dayOfEvent = new System.Windows.Forms.Label();
             this.formField2 = new System.Windows.Forms.TextBox();
+            this.eventDay = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.eventDay)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -46,13 +48,13 @@
             this.label1.Text = "Event Name";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // formField1
+            // eventName
             // 
-            this.formField1.Location = new System.Drawing.Point(209, 106);
-            this.formField1.Name = "formField1";
-            this.formField1.Size = new System.Drawing.Size(150, 31);
-            this.formField1.TabIndex = 1;
-            this.formField1.TextChanged += new System.EventHandler(this.formField1_TextChanged);
+            this.eventName.Location = new System.Drawing.Point(209, 106);
+            this.eventName.Name = "eventName";
+            this.eventName.Size = new System.Drawing.Size(150, 31);
+            this.eventName.TabIndex = 1;
+            this.eventName.TextChanged += new System.EventHandler(this.formField1_TextChanged);
             // 
             // Save
             // 
@@ -87,25 +89,40 @@
             // 
             // formField2
             // 
-            this.formField2.Location = new System.Drawing.Point(209, 180);
+            this.formField2.Location = new System.Drawing.Point(209, 240);
             this.formField2.Name = "formField2";
             this.formField2.Size = new System.Drawing.Size(150, 31);
             this.formField2.TabIndex = 1;
+            this.formField2.Visible = false;
             this.formField2.TextChanged += new System.EventHandler(this.formField1_TextChanged);
+            // 
+            // eventDay
+            // 
+            this.eventDay.Location = new System.Drawing.Point(209, 186);
+            this.eventDay.Name = "eventDay";
+            this.eventDay.Size = new System.Drawing.Size(180, 31);
+            this.eventDay.TabIndex = 4;
+            this.eventDay.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // EventCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(512, 396);
+            this.Controls.Add(this.eventDay);
             this.Controls.Add(this.Close);
             this.Controls.Add(this.Save);
             this.Controls.Add(this.formField2);
             this.Controls.Add(this.dayOfEvent);
-            this.Controls.Add(this.formField1);
+            this.Controls.Add(this.eventName);
             this.Controls.Add(this.label1);
             this.Name = "EventCreator";
             this.Text = "EventCreator";
+            ((System.ComponentModel.ISupportInitialize)(this.eventDay)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -114,10 +131,11 @@
         #endregion
 
         private Label label1;
-        private TextBox formField1;
+        private TextBox eventName;
         private Button Save;
         private Button Close;
         private Label dayOfEvent;
         private TextBox formField2;
+        private NumericUpDown eventDay;
     }
 }

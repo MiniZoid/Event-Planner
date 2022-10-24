@@ -13,16 +13,18 @@ namespace Event_Planner
     public partial class EventCreator : Form
     {
         Form1 form;
-        public EventCreator(Form1 form)
+        DateTime dt;
+        public EventCreator(Form1 form, DateTime currmonth)
         {
             InitializeComponent();
             this.form=form;
+            this.dt = currmonth;
         }
 
         private void Save_Click(object sender, EventArgs e)
         {
-            int val = Convert.ToInt32(formField2.Text);
-            form.addEvent(formField1.Text, val);
+            int val = Convert.ToInt32(eventDay.Value);
+            form.addEvent(eventName.Text, val);
             this.Close();
         }
 

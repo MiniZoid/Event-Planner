@@ -108,7 +108,7 @@ namespace Event_Planner
 
         private void newEvent_Click(object sender, EventArgs e)
         {
-            EventCreator window = new EventCreator(this);
+            EventCreator window = new EventCreator(this, currentMonth);
             window.Show();
         }
     }
