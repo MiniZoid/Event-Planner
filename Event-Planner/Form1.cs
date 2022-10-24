@@ -71,12 +71,21 @@ namespace Event_Planner
             }
         }
 
+        /// Adds an event to the calender
+        /// 
+        /// 
+        /// <param name="plan"><the event 'name'>
+        /// <param name="day"><the day in the current month that the event takes place>
         public void addEvent(String plan, int day){
             var firstOfMonth = new DateTime(currentMonth.Year, currentMonth.Month, 1);
             int offset = (int)firstOfMonth.DayOfWeek-1;
             labels[day+offset].Text = labels[day+offset].Text + "\n\n" + "-"+ plan;
         }
 
+        /// Removes an event from the calander
+        /// 
+        /// 
+        /// <param name="day"><the day that the event is on>
         public void removeEvent(int day){
             var firstOfMonth = new DateTime(currentMonth.Year, currentMonth.Month, 1);
             int offset = (int)firstOfMonth.DayOfWeek-1;
