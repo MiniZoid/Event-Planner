@@ -21,11 +21,11 @@ namespace Event_Planner
             DateTime dt = DateTime.Now;
             Month.Text = dt.ToString("MMMMMMMMM")+" "+dt.ToString("yyyy"); 
             var firstOfMonth = new DateTime(dt.Year, dt.Month, 1);
-            int day = (int) firstOfMonth.DayOfWeek;
+            int offset = (int) firstOfMonth.DayOfWeek;
             int numbDays = DateTime.DaysInMonth(dt.Year, dt.Month);
             labels = new List<Label>();
             for(var i = 0; i <= 42; i++)
-                labels.Add(new Label(){Name = "lbl" + i,
+                labels.Add(new Label(){Name = "label" + i,
                                        Height = 136, 
                                        Width = 83, 
                                        MinimumSize = new Size(136, 83), 
@@ -43,12 +43,11 @@ namespace Event_Planner
                 x +=  142;
             }
 
-            labels[day].Text = "1";
             for(int i = 0; i<numbDays; i++)
             {
-                labels[i+day].BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+                labels[i+offset].BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
                 int d = i+1;
-                labels[i+day].Text = d.ToString();
+                labels[i+offset].Text = d.ToString();
             }            
         }
         private void Month_Click(object sender, EventArgs e){}
@@ -56,7 +55,7 @@ namespace Event_Planner
         public void updateText(DateTime dt){
             Month.Text = dt.ToString("MMMMMMMMM")+" "+dt.ToString("yyyy");
             var firstOfMonth = new DateTime(dt.Year, dt.Month, 1);
-            int day = (int)firstOfMonth.DayOfWeek;
+            int offset = (int)firstOfMonth.DayOfWeek;
             int numbDays = DateTime.DaysInMonth(dt.Year, dt.Month);
 
             for(int i = 0; i<42; i++){
@@ -64,12 +63,11 @@ namespace Event_Planner
                 labels[i].Text = "";
             }
 
-                labels[day].Text = "1";
             for(int i = 0; i<numbDays; i++)
             {
-                labels[i+day].BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+                labels[i+offset].BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
                 int d = i+1;
-                labels[i+day].Text = d.ToString();
+                labels[i+offset].Text = d.ToString();
             }
         }
 
