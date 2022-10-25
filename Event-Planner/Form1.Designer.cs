@@ -41,6 +41,7 @@
             this.next = new System.Windows.Forms.Button();
             this.newEvent = new System.Windows.Forms.Button();
             this.deleteEvent = new System.Windows.Forms.Button();
+            this.weekButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -169,11 +170,22 @@
             this.deleteEvent.Text = "Delete Event";
             this.deleteEvent.UseVisualStyleBackColor = true;
             // 
+            // weekButton
+            // 
+            this.weekButton.Location = new System.Drawing.Point(888, 9);
+            this.weekButton.Name = "weekButton";
+            this.weekButton.Size = new System.Drawing.Size(112, 34);
+            this.weekButton.TabIndex = 6;
+            this.weekButton.Text = "Week View";
+            this.weekButton.UseVisualStyleBackColor = true;
+            this.weekButton.Click += new System.EventHandler(this.weekButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1016, 1075);
+            this.Controls.Add(this.weekButton);
             this.Controls.Add(this.deleteEvent);
             this.Controls.Add(this.newEvent);
             this.Controls.Add(this.next);
@@ -208,5 +220,6 @@
         private Button prev;
         private Button newEvent;
         private Button deleteEvent;
+        private Button weekButton;
     }
 }
