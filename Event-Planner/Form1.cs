@@ -111,11 +111,5 @@ namespace Event_Planner
             EventCreator window = new EventCreator(this, currentMonth);
             window.Show();
         }
-
-        private void weekButton_Click(object sender, EventArgs e)
-        {
-            Weekform weekform = new Weekform(this, currentMonth);
-            weekform.Show();
-        }
     }
 }
