@@ -21,17 +21,12 @@ namespace Event_Planner
             this.dt = currmonth;
             this.eventDay.Maximum = DateTime.DaysInMonth(dt.Year, dt.Month);
         }   
-
+        
         private void Save_Click(object sender, EventArgs e)
         {
             int val = Convert.ToInt32(eventDay.Value);
             form.addEvent(eventName.Text, val);
             this.Close();
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void formField1_TextChanged(object sender, EventArgs e)
