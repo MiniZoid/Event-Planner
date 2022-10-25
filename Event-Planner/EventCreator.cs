@@ -19,7 +19,8 @@ namespace Event_Planner
             InitializeComponent();
             this.form=form;
             this.dt = currmonth;
-        }
+            this.eventDay.Maximum = DateTime.DaysInMonth(dt.Year, dt.Month);
+        }   
 
         private void Save_Click(object sender, EventArgs e)
         {

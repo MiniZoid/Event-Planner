@@ -33,7 +33,6 @@
             this.Save = new System.Windows.Forms.Button();
             this.Close = new System.Windows.Forms.Button();
             this.dayOfEvent = new System.Windows.Forms.Label();
-            this.formField2 = new System.Windows.Forms.TextBox();
             this.eventDay = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.eventDay)).BeginInit();
             this.SuspendLayout();
@@ -87,18 +86,19 @@
             this.dayOfEvent.Text = "Day";
             this.dayOfEvent.Click += new System.EventHandler(this.label1_Click);
             // 
-            // formField2
-            // 
-            this.formField2.Location = new System.Drawing.Point(209, 240);
-            this.formField2.Name = "formField2";
-            this.formField2.Size = new System.Drawing.Size(150, 31);
-            this.formField2.TabIndex = 1;
-            this.formField2.Visible = false;
-            this.formField2.TextChanged += new System.EventHandler(this.formField1_TextChanged);
-            // 
             // eventDay
             // 
             this.eventDay.Location = new System.Drawing.Point(209, 186);
+            this.eventDay.Maximum = new decimal(new int[] {
+            31,
+            0,
+            0,
+            0});
+            this.eventDay.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.eventDay.Name = "eventDay";
             this.eventDay.Size = new System.Drawing.Size(180, 31);
             this.eventDay.TabIndex = 4;
@@ -116,7 +116,6 @@
             this.Controls.Add(this.eventDay);
             this.Controls.Add(this.Close);
             this.Controls.Add(this.Save);
-            this.Controls.Add(this.formField2);
             this.Controls.Add(this.dayOfEvent);
             this.Controls.Add(this.eventName);
             this.Controls.Add(this.label1);
@@ -135,7 +134,6 @@
         private Button Save;
         private Button Close;
         private Label dayOfEvent;
-        private TextBox formField2;
         private NumericUpDown eventDay;
     }
 }
