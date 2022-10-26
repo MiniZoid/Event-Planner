@@ -30,17 +30,17 @@ namespace Event_Planner
 
         private Month generateMonth(DateTime dt){
             Month month = new(dt);
-            Month.Text = month.ToString();
             try{
-                months.Add(getCurrentMonth(),month);
+                months.Add(getCurrentMonth(dt),month);
             }
             catch{
-                return months[getCurrentMonth()];
+                return months[getCurrentMonth(dt)];
             }
             return month;
         }
 
         public void paintMonth(Month month){
+            Month.Text = month.ToString();
             var x = 12;
             var y = 161;
             foreach(var day in boxes) {
@@ -65,9 +65,9 @@ namespace Event_Planner
         private void Month_Click(object sender, EventArgs e) { }
 
         public void addEvent(String plan, DateTime dt){
-            String cache = dt.ToString("MMM")+dt.ToString("yyyy");
-            months[cache].addEvent(plan,dt);
-            paintMonth(months[cache]);
+            Month month = generateMonth(dt);
+            months[getCurrentMonth(dt)].addEvent(plan,dt);            
+            paintMonth(months[getCurrentMonth(currentMonth)]);
         }
 
         public void removeEvent(int day){
@@ -97,8 +97,8 @@ namespace Event_Planner
             weekform.Show();
         }
 
-        public String getCurrentMonth(){
-            return currentMonth.ToString("MMM")+currentMonth.ToString("yyyy");
+        public String getCurrentMonth(DateTime dt){
+            return dt.ToString("MMM")+dt.ToString("yyyy");
         }
     }
 }
