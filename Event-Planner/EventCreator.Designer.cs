@@ -32,9 +32,7 @@
             this.eventName = new System.Windows.Forms.TextBox();
             this.Save = new System.Windows.Forms.Button();
             this.Close = new System.Windows.Forms.Button();
-            this.dayOfEvent = new System.Windows.Forms.Label();
-            this.eventDay = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.eventDay)).BeginInit();
+            this.dtForm = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label1
@@ -51,13 +49,13 @@
             // 
             this.eventName.Location = new System.Drawing.Point(209, 106);
             this.eventName.Name = "eventName";
-            this.eventName.Size = new System.Drawing.Size(150, 31);
+            this.eventName.Size = new System.Drawing.Size(180, 31);
             this.eventName.TabIndex = 1;
             this.eventName.TextChanged += new System.EventHandler(this.formField1_TextChanged);
             // 
             // Save
             // 
-            this.Save.Location = new System.Drawing.Point(388, 350);
+            this.Save.Location = new System.Drawing.Point(388, 450);
             this.Save.Name = "Save";
             this.Save.Size = new System.Drawing.Size(112, 34);
             this.Save.TabIndex = 2;
@@ -68,7 +66,7 @@
             // Close
             // 
             this.Close.AllowDrop = true;
-            this.Close.Location = new System.Drawing.Point(12, 350);
+            this.Close.Location = new System.Drawing.Point(12, 459);
             this.Close.Name = "Close";
             this.Close.Size = new System.Drawing.Size(112, 34);
             this.Close.TabIndex = 3;
@@ -76,52 +74,26 @@
             this.Close.UseVisualStyleBackColor = true;
             this.Close.Click += new System.EventHandler(this.Close_Click);
             // 
-            // dayOfEvent
+            // dtForm
             // 
-            this.dayOfEvent.AutoSize = true;
-            this.dayOfEvent.Location = new System.Drawing.Point(121, 186);
-            this.dayOfEvent.Name = "dayOfEvent";
-            this.dayOfEvent.Size = new System.Drawing.Size(43, 25);
-            this.dayOfEvent.TabIndex = 0;
-            this.dayOfEvent.Text = "Day";
-            this.dayOfEvent.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // eventDay
-            // 
-            this.eventDay.Location = new System.Drawing.Point(209, 186);
-            this.eventDay.Maximum = new decimal(new int[] {
-            31,
-            0,
-            0,
-            0});
-            this.eventDay.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.eventDay.Name = "eventDay";
-            this.eventDay.Size = new System.Drawing.Size(180, 31);
-            this.eventDay.TabIndex = 4;
-            this.eventDay.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.dtForm.Location = new System.Drawing.Point(96, 220);
+            this.dtForm.Name = "dtForm";
+            this.dtForm.Size = new System.Drawing.Size(293, 31);
+            this.dtForm.TabIndex = 5;
+            this.dtForm.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // EventCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(512, 396);
-            this.Controls.Add(this.eventDay);
+            this.ClientSize = new System.Drawing.Size(512, 496);
+            this.Controls.Add(this.dtForm);
             this.Controls.Add(this.Close);
             this.Controls.Add(this.Save);
-            this.Controls.Add(this.dayOfEvent);
             this.Controls.Add(this.eventName);
             this.Controls.Add(this.label1);
             this.Name = "EventCreator";
             this.Text = "EventCreator";
-            ((System.ComponentModel.ISupportInitialize)(this.eventDay)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -133,7 +105,6 @@
         private TextBox eventName;
         private Button Save;
         private Button Close;
-        private Label dayOfEvent;
-        private NumericUpDown eventDay;
+        private DateTimePicker dtForm;
     }
 }

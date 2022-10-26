@@ -64,9 +64,9 @@ namespace Event_Planner
         }
         private void Month_Click(object sender, EventArgs e) { }
 
-        public void addEvent(String plan, int day){
-            String cache = getCurrentMonth();
-            months[cache].addEvent(plan,day);
+        public void addEvent(String plan, DateTime dt){
+            String cache = dt.ToString("MMM")+dt.ToString("yyyy");
+            months[cache].addEvent(plan,dt);
             paintMonth(months[cache]);
         }
 

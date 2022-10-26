@@ -19,8 +19,8 @@ public class Month{
         }
     }
 
-    public void addEvent(String plan, int day){
-       days[day].createEvent(plan);   
+    public void addEvent(String day, DateTime dt){
+       days[dt.Day].createEvent(day,dt);   
     }
     override
     public String ToString(){

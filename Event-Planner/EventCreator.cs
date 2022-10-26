@@ -19,13 +19,13 @@ namespace Event_Planner
             InitializeComponent();
             this.form=form;
             this.dt = currmonth;
-            this.eventDay.Maximum = DateTime.DaysInMonth(dt.Year, dt.Month);
+
+            //this.eventDay.Maximum = DateTime.DaysInMonth(dt.Year, dt.Month);
         }   
         
         private void Save_Click(object sender, EventArgs e)
         {
-            int val = Convert.ToInt32(eventDay.Value);
-            form.addEvent(eventName.Text, val);
+            form.addEvent(eventName.Text, dtForm.Value);
             this.Close();
         }
 
@@ -42,6 +42,10 @@ namespace Event_Planner
         private void Close_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender,EventArgs e) {
+
         }
     }
 }
