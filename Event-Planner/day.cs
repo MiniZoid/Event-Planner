@@ -4,10 +4,9 @@ public class Day
 {
     Label label = new Label();
 	String day;
-	List<Plan> plans;
+	Dictionary<String, Plan> plans = new Dictionary<String, Plan>();
     public Day(int i){
 		day = i.ToString();
-		plans = new List<Plan>();
 		label.Height = 136;
 		label.Width = 83;
 		label.MinimumSize = new Size(136,83);
@@ -25,23 +24,27 @@ public class Day
 
 	public void createEvent(String name, DateTime time){
 		Plan plan = new Plan(name,time);
-		plans.Add(plan);
-		label.Text = day + "\n"+  printPlans();
+		try{
+            plans.Add(name,plan);
+        }
+		catch{
+			
+			}
+		label.Text = getText();
+	}
+
+	public void deleteEvent(){
+		
 	}
 
 	public String printPlans(){
 		String str ="";
-		for(int i=0; i<plans.Count;i++){
-			str = plans[i].ToString() + "\n" + str;		
+		foreach(KeyValuePair<String,Plan> kvp in plans){
+			str = string.Format("{0}",kvp.Value) + "\n" + str;		
 		}
 		return str;
 	}
-
-	public void setText(String text){
-		label.Text = text;
-	}
-
 	public String getText(){ 
-		return label.Text;	
+		return day + "\n" + printPlans();	
 	}
 }

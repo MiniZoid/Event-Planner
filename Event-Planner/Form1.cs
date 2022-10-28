@@ -27,8 +27,8 @@ namespace Event_Planner
         private void Form1_Load(object sender, EventArgs e)
         {
             Month start = generateMonth(currentMonth);
-            this.previousMonth = generateMonth(currentMonth.AddMonths(1));
-            this.nextMonth =  generateMonth(currentMonth.AddMonths(-1));
+            this.previousMonth = generateMonth(currentMonth.AddMonths(-1));
+            this.nextMonth =  generateMonth(currentMonth.AddMonths(1));
             paintMonth(start,previousMonth,nextMonth);
         }
 
@@ -57,19 +57,19 @@ namespace Event_Planner
                 x +=  142;
             }
 
-            for(int i = 0;i<42;i++) {
+            for(int i = 0;i<42;i++){
                 boxes[i].BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
                 boxes[i].Text = "";
             }
 
             int prevOffset = previousMonth.numbOfDays - current.firstOfMonth+1;
             for(int k=0; k<current.firstOfMonth; k++){
-                boxes[k].Text = previous.days[prevOffset].getText();
                 boxes[k].BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+                boxes[k].Text = previous.days[prevOffset].getText();
                 prevOffset++;
             }
 
-            for(int i = 0;i<current.numbOfDays;i++) {
+            for(int i = 0;i<current.numbOfDays;i++){
                 boxes[i+current.firstOfMonth].Text = current.days[i+1].getText();
             }
             int set = 1;
@@ -83,13 +83,12 @@ namespace Event_Planner
         private void Month_Click(object sender, EventArgs e) { }
 
         public void addEvent(String plan, DateTime dt){
-            Month month = generateMonth(dt);
-            months[getCurrentMonth(dt)].addEvent(plan,dt);            
-            paintMonth(months[getCurrentMonth(currentMonth)],previousMonth,nextMonth);
+            Month cache = generateMonth(dt);
+            months[getCurrentMonth(dt)].addEvent(plan,dt);             
+            paintMonth(generateMonth(currentMonth),previousMonth,nextMonth);
         }
 
-        public void removeEvent(int day){
-        }
+        public void removeEvent(int day){}
 
         private void next_Click(object sender, EventArgs e)
         {
