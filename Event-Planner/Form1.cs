@@ -122,5 +122,16 @@ namespace Event_Planner
         public String getCurrentMonth(DateTime dt){
             return dt.ToString("MMM")+dt.ToString("yyyy");
         }
+
+        public Dictionary<String, Month>  getMonthDict()
+        {
+            return months;
+        }
+
+        private void eventViewButton_Click(object sender, EventArgs e)
+        {
+            EventView eventview = new EventView(this, currentMonth);
+            eventview.Show();
+        }
     }
 }

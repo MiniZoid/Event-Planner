@@ -3,8 +3,8 @@
 public class Day
 {
     Label label = new Label();
-	String day;
-	List<Plan> plans;
+	public String day;
+	public List<Plan> plans;
     public Day(int i){
 		day = i.ToString();
 		plans = new List<Plan>();
@@ -30,11 +30,24 @@ public class Day
 	}
 
 	public String printPlans(){
-		String str ="";
-		for(int i=0; i<plans.Count;i++){
-			str = plans[i].ToString() + "\n" + str;		
+        String str = "";
+        if (plans.Count > 1)
+		{
+			str = plans.Count.ToString() + " events";
 		}
+		else
+		{
+			str = plans[0].ToString();
+        }
+		//for(int i=0; i<plans.Count;i++){
+		//	str = plans[i].ToString() + "\n" + str;		
+		//}
 		return str;
+	}
+
+	public List<Plan> getPlans()
+	{
+		return plans;
 	}
 
 	public void setText(String text){
