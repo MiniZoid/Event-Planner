@@ -4,7 +4,7 @@ public class Day
 {
     Label label = new Label();
 	String day;
-	Dictionary<String, Plan> plans = new Dictionary<String, Plan>();
+	public Dictionary<String, Plan> plans = new Dictionary<String, Plan>();
     public Day(int i){
 		day = i.ToString();
 		label.Height = 136;
