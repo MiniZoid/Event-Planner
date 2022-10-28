@@ -47,5 +47,10 @@ namespace Event_Planner
         private void dateTimePicker1_ValueChanged(object sender,EventArgs e) {
 
         }
+
+        private void EventCreator_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

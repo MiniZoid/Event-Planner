@@ -26,4 +26,9 @@ public class Month{
     public String ToString(){
         return time.ToString("MMMMMMMMM")+" "+time.ToString("yyyy");
     }
+
+    public List<Day> getDays()
+    {
+        return days;
+    }
 }
