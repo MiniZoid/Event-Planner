@@ -61,14 +61,12 @@ namespace Event_Planner
                 boxes[i].BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
                 boxes[i].Text = "";
             }
-
             int prevOffset = previousMonth.numbOfDays - current.firstOfMonth+1;
             for(int k=0; k<current.firstOfMonth; k++){
                 boxes[k].BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
                 boxes[k].Text = previous.days[prevOffset].getText();
                 prevOffset++;
             }
-
             for(int i = 0;i<current.numbOfDays;i++){
                 boxes[i+current.firstOfMonth].Text = current.days[i+1].getText();
             }
@@ -95,15 +93,14 @@ namespace Event_Planner
             previousMonth = generateMonth(currentMonth);
             currentMonth = currentMonth.AddMonths(1);
             nextMonth = generateMonth(currentMonth.AddMonths(1));
-            paintMonth(generateMonth(currentMonth), nextMonth, previousMonth);
+            paintMonth(generateMonth(currentMonth),previousMonth, nextMonth);
         }
 
-        private void prev_Click(object sender, EventArgs e){
-            
+        private void prev_Click(object sender, EventArgs e){            
             nextMonth = generateMonth(currentMonth);
             currentMonth = currentMonth.AddMonths(-1);
             previousMonth = generateMonth(currentMonth.AddMonths(-1));
-            paintMonth(generateMonth(currentMonth), nextMonth, previousMonth);
+            paintMonth(generateMonth(currentMonth),previousMonth, nextMonth);
         }
 
         private void newEvent_Click(object sender, EventArgs e)
