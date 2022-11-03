@@ -26,5 +26,17 @@ namespace Event_Planner
             EventCreator window = new EventCreator(form, dt);
             window.Show();
         }
+
+        private void PaintWeekView(object sender, EventArgs s)
+        {
+            
+
+
+        }
+
+        private void nextweek_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
