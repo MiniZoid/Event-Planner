@@ -24,8 +24,7 @@ namespace Event_Planner
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
+        private void Form1_Load(object sender, EventArgs e){
             Month start = generateMonth(currentMonth);
             this.previousMonth = generateMonth(currentMonth.AddMonths(-1));
             this.nextMonth =  generateMonth(currentMonth.AddMonths(1));
@@ -47,7 +46,7 @@ namespace Event_Planner
             Month.Text = current.ToString();
             var x = 12;
             var y = 161;
-            foreach(var day in boxes) {
+            foreach(var day in boxes){
                 if(x >= 1000) {
                     x = 12;
                     y = y + 140;
@@ -56,7 +55,6 @@ namespace Event_Planner
                 this.Controls.Add(day);
                 x +=  142;
             }
-
             for(int i = 0;i<42;i++){
                 boxes[i].BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
                 boxes[i].Text = "";
@@ -78,7 +76,7 @@ namespace Event_Planner
             }
 
         }
-        private void Month_Click(object sender, EventArgs e) { }
+        private void Month_Click(object sender, EventArgs e){ }
 
         public void addEvent(String plan, DateTime dt){
             Month cache = generateMonth(dt);
@@ -88,8 +86,7 @@ namespace Event_Planner
 
         public void removeEvent(int day){}
 
-        private void next_Click(object sender, EventArgs e)
-        {
+        private void next_Click(object sender, EventArgs e){
             previousMonth = generateMonth(currentMonth);
             currentMonth = currentMonth.AddMonths(1);
             nextMonth = generateMonth(currentMonth.AddMonths(1));
@@ -103,14 +100,12 @@ namespace Event_Planner
             paintMonth(generateMonth(currentMonth),previousMonth, nextMonth);
         }
 
-        private void newEvent_Click(object sender, EventArgs e)
-        {
+        private void newEvent_Click(object sender, EventArgs e){
             EventCreator window = new EventCreator(this, currentMonth);
             window.Show();
         }
 
-        private void weekButton_Click(object sender, EventArgs e)
-        {
+        private void weekButton_Click(object sender, EventArgs e){
             Weekform weekform = new Weekform(this, currentMonth);
             weekform.Show();
         }
