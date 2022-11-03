@@ -43,7 +43,7 @@ namespace Event_Planner
             {
                 foreach(var plan in day.plans)
                 {
-                    i = i + "-" + plan + newLine;
+                    i = i + "-" + plan.Key.ToString() + " at " + plan.Value.getTime() +  newLine;
                 }     
             }
             i = i.ToString();

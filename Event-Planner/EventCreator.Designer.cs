@@ -33,34 +33,32 @@
             this.Save = new System.Windows.Forms.Button();
             this.Close = new System.Windows.Forms.Button();
             this.dtForm = new System.Windows.Forms.DateTimePicker();
+            this.TimePicker = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(115, 127);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(96, 106);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(126, 30);
+            this.label1.Size = new System.Drawing.Size(107, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Event Name";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // eventName
             // 
-            this.eventName.Location = new System.Drawing.Point(251, 127);
-            this.eventName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.eventName.Location = new System.Drawing.Point(209, 106);
             this.eventName.Name = "eventName";
-            this.eventName.Size = new System.Drawing.Size(215, 35);
+            this.eventName.Size = new System.Drawing.Size(180, 31);
             this.eventName.TabIndex = 1;
             this.eventName.TextChanged += new System.EventHandler(this.formField1_TextChanged);
             // 
             // Save
             // 
-            this.Save.Location = new System.Drawing.Point(466, 540);
-            this.Save.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Save.Location = new System.Drawing.Point(388, 450);
             this.Save.Name = "Save";
-            this.Save.Size = new System.Drawing.Size(134, 41);
+            this.Save.Size = new System.Drawing.Size(112, 34);
             this.Save.TabIndex = 2;
             this.Save.Text = "Save";
             this.Save.UseVisualStyleBackColor = true;
@@ -69,10 +67,9 @@
             // Close
             // 
             this.Close.AllowDrop = true;
-            this.Close.Location = new System.Drawing.Point(14, 551);
-            this.Close.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Close.Location = new System.Drawing.Point(12, 459);
             this.Close.Name = "Close";
-            this.Close.Size = new System.Drawing.Size(134, 41);
+            this.Close.Size = new System.Drawing.Size(112, 34);
             this.Close.TabIndex = 3;
             this.Close.Text = "Close";
             this.Close.UseVisualStyleBackColor = true;
@@ -80,24 +77,32 @@
             // 
             // dtForm
             // 
-            this.dtForm.Location = new System.Drawing.Point(115, 264);
-            this.dtForm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtForm.Location = new System.Drawing.Point(96, 220);
             this.dtForm.Name = "dtForm";
-            this.dtForm.Size = new System.Drawing.Size(351, 35);
+            this.dtForm.Size = new System.Drawing.Size(293, 31);
             this.dtForm.TabIndex = 5;
             this.dtForm.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
+            // TimePicker
+            // 
+            this.TimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.TimePicker.Location = new System.Drawing.Point(96, 270);
+            this.TimePicker.Name = "TimePicker";
+            this.TimePicker.Size = new System.Drawing.Size(293, 31);
+            this.TimePicker.TabIndex = 6;
+            this.TimePicker.Value = new System.DateTime(2022, 11, 3, 18, 35, 0, 0);
+            // 
             // EventCreator
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(614, 595);
+            this.ClientSize = new System.Drawing.Size(512, 496);
+            this.Controls.Add(this.TimePicker);
             this.Controls.Add(this.dtForm);
             this.Controls.Add(this.Close);
             this.Controls.Add(this.Save);
             this.Controls.Add(this.eventName);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "EventCreator";
             this.Text = "EventCreator";
             this.Load += new System.EventHandler(this.EventCreator_Load);
@@ -113,5 +118,6 @@
         private Button Save;
         private Button Close;
         private DateTimePicker dtForm;
+        private DateTimePicker TimePicker;
     }
 }

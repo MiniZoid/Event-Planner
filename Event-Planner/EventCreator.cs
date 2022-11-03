@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace Event_Planner
 {
@@ -25,7 +26,9 @@ namespace Event_Planner
         
         private void Save_Click(object sender, EventArgs e)
         {
-            form.addEvent(eventName.Text, dtForm.Value);
+            DateTime eventDate = dtForm.Value.Date + TimePicker.Value.TimeOfDay;
+
+            form.addEvent(eventName.Text, eventDate);
             this.Close();
         }
 
