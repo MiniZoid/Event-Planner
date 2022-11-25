@@ -76,7 +76,7 @@ namespace Event_Planner
             }
 
         }
-        private void Month_Click(object sender, EventArgs e){ }
+        private void Month_Click(object sender, EventArgs e){}
 
         public void addEvent(String plan, DateTime dt){
             Month cache = generateMonth(dt);
