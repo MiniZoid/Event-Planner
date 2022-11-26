@@ -1,6 +1,11 @@
 using System.Collections;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 using System.Windows.Forms;
+using System.Xml;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Net.Http.Json;
+using Newtonsoft.Json;
 
 namespace Event_Planner
 {
@@ -9,8 +14,10 @@ namespace Event_Planner
         List<Label> boxes = new List<Label>();
         public DateTime currentMonth = DateTime.Now;
         Dictionary<String,Month> months = new Dictionary<String, Month>();
+        Dictionary<string,List<string>> JSONData = new Dictionary<string,List<string>>();
         public Month previousMonth;
         public Month nextMonth;
+        public Month thisMonth;
         public Form1(){
             InitializeComponent();
             for(var i = 0;i <= 42;i++){
@@ -29,6 +36,8 @@ namespace Event_Planner
             this.previousMonth = generateMonth(currentMonth.AddMonths(-1));
             this.nextMonth =  generateMonth(currentMonth.AddMonths(1));
             paintMonth(start,previousMonth,nextMonth);
+            thisMonth = start;
+            readJSON();
         }
 
         public Month generateMonth(DateTime dt){
@@ -84,14 +93,11 @@ namespace Event_Planner
             paintMonth(generateMonth(currentMonth),previousMonth,nextMonth);
         }
 
-        public void removeEvent(string plan){
-                
-        }
-
         private void next_Click(object sender, EventArgs e){
             previousMonth = generateMonth(currentMonth);
             currentMonth = currentMonth.AddMonths(1);
             nextMonth = generateMonth(currentMonth.AddMonths(1));
+            thisMonth = generateMonth(currentMonth);
             paintMonth(generateMonth(currentMonth),previousMonth, nextMonth);
         }
 
@@ -99,6 +105,7 @@ namespace Event_Planner
             nextMonth = generateMonth(currentMonth);
             currentMonth = currentMonth.AddMonths(-1);
             previousMonth = generateMonth(currentMonth.AddMonths(-1));
+            thisMonth = generateMonth(currentMonth);
             paintMonth(generateMonth(currentMonth),previousMonth, nextMonth);
         }
 
@@ -116,8 +123,7 @@ namespace Event_Planner
             return dt.ToString("MMM")+dt.ToString("yyyy");
         }
 
-        public Dictionary<String, Month>  getMonthDict()
-        {
+        public Dictionary<String, Month>  getMonthDict(){
             return months;
         }
 
@@ -125,6 +131,46 @@ namespace Event_Planner
         {
             EventView eventview = new EventView(this, currentMonth);
             eventview.Show();
+        }
+
+        private void readJSON(){
+            string fileName = "data.json";
+            string jsonString = File.ReadAllText(fileName);
+            Dictionary<string, List<string>> values = JsonConvert.DeserializeObject<Dictionary<string,List<string>>>(jsonString);
+            foreach(KeyValuePair<string,List<string>> entry in values){
+                Month cache = months[entry.Key];
+                List<string> events = values[entry.Key];
+                for(int i=0; i<events.Count; i++){
+                    string[] items = events[i].Split(",");
+                    for(int x=0;x<items.Length;x++){
+                        string[] split = items[x].Split(" ");
+                        if(split[0] == ""){
+                            continue;
+                        }
+                        string name = split[0];
+                        string time = split[1];
+                        string dateInput = time;
+                        var parsedDate = DateTime.Parse(dateInput);
+                        cache.days[i].createEvent(name,parsedDate);
+                    }
+                        
+                }
+
+            }
+            paintMonth(thisMonth, previousMonth, nextMonth);
+        }
+
+        public void writeJSON(){
+            try{
+                JSONData.Add(thisMonth.getKey(),thisMonth.getEvents());
+            }
+            catch(Exception ex){
+                JSONData[thisMonth.getKey()] = thisMonth.getEvents();    
+            }
+            string fileName = "data.json";
+            var options = new JsonSerializerOptions{WriteIndented = true};
+            string jsonString = System.Text.Json.JsonSerializer.Serialize(JSONData, options);
+            File.WriteAllText(fileName,jsonString);
         }
 
         private void deleteEvent_Click(object sender,EventArgs e) {

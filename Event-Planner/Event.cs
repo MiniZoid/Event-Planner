@@ -23,6 +23,7 @@ public class Plan{
 	}
 	override
 	public String ToString(){
-		return name;	
-	}
+		return name + " " + time.ToString("hh:mm tt");	
+
+    }
 }

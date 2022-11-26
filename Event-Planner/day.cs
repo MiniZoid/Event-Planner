@@ -37,6 +37,18 @@ public class Day
 		plans.Remove(key);
 		
 	}
+
+	public string getPlans(){
+		string result = "";
+        foreach(KeyValuePair<string,Plan> entry in plans){
+			result = result + " "+entry.Value.ToString()+",";
+		}
+		if(result.Length>0){
+			result = result.Remove(0,1);
+		}
+		return result;
+	}
+
 	public String getText(){ 
 		if(plans.Count == 0){
 			return day;	

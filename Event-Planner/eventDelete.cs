@@ -56,8 +56,13 @@ namespace Event_Planner {
             for(int i=0; i<keys.Count; i++){
                 day.deleteEvent(keys[i]);
             }
+            form.writeJSON();
             this.Close();
             form.paintMonth(form.generateMonth(form.currentMonth),form.previousMonth,form.nextMonth);
+        }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender,EventArgs e) {
+
         }
     }
 }

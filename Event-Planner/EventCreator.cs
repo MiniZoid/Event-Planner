@@ -29,6 +29,7 @@ namespace Event_Planner
             DateTime eventDate = dtForm.Value.Date + TimePicker.Value.TimeOfDay;
 
             form.addEvent(eventName.Text, eventDate);
+            form.writeJSON();
             this.Close();
         }
 

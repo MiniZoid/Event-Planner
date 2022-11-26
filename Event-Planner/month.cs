@@ -31,6 +31,22 @@ public class Month{
         return time.ToString("MMMMMMMMM")+" "+time.ToString("yyyy");
     }
 
+    public string getKey(){
+        return time.ToString("MMM")+time.ToString("yyyy");    
+    }
+
+    public List<string> getEvents(){
+        List<string> events = new List<string>();
+        for(int i=0; i<days.Count;  i++){
+            events.Add(days[i].getPlans());
+        }
+        return events;
+    }
+
+    public void readEvents(){
+            
+    }
+
     public List<Day> getDays()
     {
         return days;
