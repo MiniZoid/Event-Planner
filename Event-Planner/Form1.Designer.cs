@@ -170,6 +170,7 @@
             this.deleteEvent.TabIndex = 5;
             this.deleteEvent.Text = "Delete Event";
             this.deleteEvent.UseVisualStyleBackColor = true;
+            this.deleteEvent.Click += new System.EventHandler(this.deleteEvent_Click);
             // 
             // weekButton
             // 
@@ -184,7 +185,7 @@
             // eventViewButton
             // 
             this.eventViewButton.Location = new System.Drawing.Point(382, 1030);
-            this.eventViewButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.eventViewButton.Margin = new System.Windows.Forms.Padding(2);
             this.eventViewButton.Name = "eventViewButton";
             this.eventViewButton.Size = new System.Drawing.Size(179, 33);
             this.eventViewButton.TabIndex = 7;
@@ -196,6 +197,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1016, 1075);
             this.Controls.Add(this.eventViewButton);
             this.Controls.Add(this.weekButton);

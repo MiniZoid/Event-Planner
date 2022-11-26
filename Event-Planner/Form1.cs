@@ -7,10 +7,10 @@ namespace Event_Planner
     public partial class Form1 : Form
     {
         List<Label> boxes = new List<Label>();
-        DateTime currentMonth = DateTime.Now;
+        public DateTime currentMonth = DateTime.Now;
         Dictionary<String,Month> months = new Dictionary<String, Month>();
-        Month previousMonth;
-        Month nextMonth;
+        public Month previousMonth;
+        public Month nextMonth;
         public Form1(){
             InitializeComponent();
             for(var i = 0;i <= 42;i++){
@@ -31,7 +31,7 @@ namespace Event_Planner
             paintMonth(start,previousMonth,nextMonth);
         }
 
-        private Month generateMonth(DateTime dt){
+        public Month generateMonth(DateTime dt){
             Month month = new(dt);
             try{
                 months.Add(getCurrentMonth(dt),month);
@@ -84,7 +84,9 @@ namespace Event_Planner
             paintMonth(generateMonth(currentMonth),previousMonth,nextMonth);
         }
 
-        public void removeEvent(int day){}
+        public void removeEvent(string plan){
+                
+        }
 
         private void next_Click(object sender, EventArgs e){
             previousMonth = generateMonth(currentMonth);
@@ -123,6 +125,11 @@ namespace Event_Planner
         {
             EventView eventview = new EventView(this, currentMonth);
             eventview.Show();
+        }
+
+        private void deleteEvent_Click(object sender,EventArgs e) {
+            eventDelete eventDelete = new eventDelete(this, months);
+            eventDelete.Show();
         }
     }
 }

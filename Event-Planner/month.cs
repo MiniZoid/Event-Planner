@@ -22,6 +22,10 @@ public class Month{
     public void addEvent(String day, DateTime dt){
        days[dt.Day].createEvent(day,dt);   
     }
+
+    public void removeEvent(string key, DateTime dt){
+        days[dt.Day].deleteEvent(key);
+    }
     override
     public String ToString(){
         return time.ToString("MMMMMMMMM")+" "+time.ToString("yyyy");

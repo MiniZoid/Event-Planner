@@ -33,18 +33,14 @@ public class Day
 		label.Text = getText();
 	}
 
-	public void deleteEvent(){
+	public void deleteEvent(string key){
+		plans.Remove(key);
 		
 	}
-
-	public String printPlans(){
-		String str ="";
-		foreach(KeyValuePair<String,Plan> kvp in plans){
-			str = string.Format("{0}",kvp.Value) + "\n" + str;		
-		}
-		return str;
-	}
 	public String getText(){ 
-		return day + "\n" + printPlans();	
+		if(plans.Count == 0){
+			return day;	
+		}
+		return day + "\nEvents today: \n" + plans.Count.ToString();	
 	}
 }
