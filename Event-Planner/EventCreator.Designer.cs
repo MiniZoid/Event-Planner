@@ -104,7 +104,7 @@
             this.Controls.Add(this.eventName);
             this.Controls.Add(this.label1);
             this.Name = "EventCreator";
-            this.Text = "EventCreator";
+            this.Text = "Create Event";
             this.Load += new System.EventHandler(this.EventCreator_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

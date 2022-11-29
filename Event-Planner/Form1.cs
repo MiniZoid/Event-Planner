@@ -177,9 +177,13 @@ namespace Event_Planner{
         public void writeJSON(){
             try{
                 JSONData.Add(thisMonth.getKey(),thisMonth.getEvents());
+                JSONData.Add(previousMonth.getKey(),previousMonth.getEvents());
+                JSONData.Add(nextMonth.getKey(),nextMonth.getEvents());
             }
             catch(Exception ex){
-                JSONData[thisMonth.getKey()] = thisMonth.getEvents();    
+                JSONData[thisMonth.getKey()] = thisMonth.getEvents();
+                JSONData[previousMonth.getKey()] = previousMonth.getEvents();
+                JSONData[nextMonth.getKey()] = nextMonth.getEvents();
             }
             string fileName = "data.json";
             var options = new JsonSerializerOptions{WriteIndented = true};
