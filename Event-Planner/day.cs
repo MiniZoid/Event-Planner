@@ -3,9 +3,12 @@
 public class Day
 {
     Label label = new Label();
-	String day;
+	string day;
+	int dayNum;
+	DateTime dt;
 	public Dictionary<String, Plan> plans = new Dictionary<String, Plan>();
     public Day(int i){
+		dayNum = i;
 		day = i.ToString();
 		label.Height = 136;
 		label.Width = 83;
@@ -14,22 +17,19 @@ public class Day
 		label.Text = day.ToString();
     }
 
-	public void setVisible(){
-		label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-    }
-
-	public void setInvisible(){
-        label.BorderStyle = System.Windows.Forms.BorderStyle.None;
-    }
+	public bool isToday(){
+		if((int)DateTime.Now.Day == dayNum){
+			return true;	
+		}
+		return false;
+	}
 
 	public void createEvent(String name, DateTime time){
 		Plan plan = new Plan(name,time);
 		try{
             plans.Add(name,plan);
         }
-		catch{
-			
-			}
+		catch{}
 		label.Text = getText();
 	}
 

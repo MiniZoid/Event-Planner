@@ -26,6 +26,11 @@ namespace Event_Planner
         
         private void Save_Click(object sender, EventArgs e)
         {
+
+            if(eventName.Text == ""){
+                MessageBox.Show("Event name cannot be blank");
+                return;
+            }
             DateTime eventDate = dtForm.Value.Date + TimePicker.Value.TimeOfDay;
 
             form.addEvent(eventName.Text, eventDate);

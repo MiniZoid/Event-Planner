@@ -15,15 +15,16 @@ public class Plan{
     }
 
 	public String getTime(){
-		return time.Hour.ToString()+time.Minute.ToString();	
-	}
+		return time.ToString("MM/dd/yyyy hh:mm tt");
+
+    }
 
 	public String getName(){
 		return name;
 	}
 	override
 	public String ToString(){
-		return name + " " + time.ToString("hh:mm tt");	
+		return name + "|" + time.ToString("hh:mm tt");	
 
     }
 }

@@ -27,23 +27,17 @@ namespace Event_Planner
             this.dt = currmonth;
         }
 
-        private void EventView_Load(object sender, EventArgs e)
-        {
-            string title = "Events For " + dt.ToString("MMM") + " " + dt.ToString("yyyy");
-            eventview_label.Text = title;
-
-
+        private void EventView_Load(object sender, EventArgs e){
+            eventview_label.Text = "Events For " + dt.ToString("MMM") + ". " + dt.ToString("yyyy");
             months = getMonths();
             days = getDays();
 
             String i = "";
             string newLine = Environment.NewLine;
 
-            foreach (var day in days)
-            {
-                foreach(var plan in day.plans)
-                {
-                    i = i + "-" + plan.Key.ToString() + " at " + plan.Value.getTime() +  newLine;
+            foreach(var day in days){
+                foreach(var plan in day.plans){
+                    i = i + "-" + plan.Key.ToString() + " at " + plan.Value.getTime() + newLine;
                 }     
             }
             i = i.ToString();

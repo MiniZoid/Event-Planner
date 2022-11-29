@@ -7,11 +7,11 @@ using System.Text.Json.Serialization;
 using System.Net.Http.Json;
 using Newtonsoft.Json;
 
-namespace Event_Planner
-{
+namespace Event_Planner{
     public partial class Form1 : Form
     {
         List<Label> boxes = new List<Label>();
+        List<Day> displayDays = new List<Day>(42);
         public DateTime currentMonth = DateTime.Now;
         Dictionary<String,Month> months = new Dictionary<String, Month>();
         Dictionary<string,List<string>> JSONData = new Dictionary<string,List<string>>();
@@ -21,7 +21,7 @@ namespace Event_Planner
         public Form1(){
             InitializeComponent();
             for(var i = 0;i <= 42;i++){
-                boxes.Add(new Label() {
+                boxes.Add(new Label(){
                     Name =  i.ToString(),
                     Height = 136,
                     Width = 83,
@@ -39,7 +39,6 @@ namespace Event_Planner
             thisMonth = start;
             readJSON();
         }
-
         public Month generateMonth(DateTime dt){
             Month month = new(dt);
             try{
@@ -67,23 +66,45 @@ namespace Event_Planner
             for(int i = 0;i<42;i++){
                 boxes[i].BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
                 boxes[i].Text = "";
+                boxes[i].ForeColor = System.Drawing.Color.Black;
             }
+            displayDays.Clear();
             int prevOffset = previousMonth.numbOfDays - current.firstOfMonth+1;
             for(int k=0; k<current.firstOfMonth; k++){
                 boxes[k].BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
                 boxes[k].Text = previous.days[prevOffset].getText();
+                displayDays.Add(previous.days[prevOffset]);
                 prevOffset++;
             }
             for(int i = 0;i<current.numbOfDays;i++){
                 boxes[i+current.firstOfMonth].Text = current.days[i+1].getText();
+                displayDays.Add(previous.days[i+1]);
             }
             int set = 1;
             for(int l=current.numbOfDays+current.firstOfMonth; l<42; l++){
                 boxes[l].BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
                 boxes[l].Text = next.days[set].getText();
+                displayDays.Add(previous.days[set]);
                 set++;
             }
-
+            if(next.isCurrentMonth() == true){
+                for(int i=current.numbOfDays+prevOffset; i<42; i++){
+                    if(displayDays[i].isToday() == true) boxes[i].ForeColor = System.Drawing.Color.Red;
+                }    
+            }
+            else if(current.isCurrentMonth() == true){
+                for(int i=0; i<42; i++){
+                    if(displayDays[i].isToday() == true){
+                        boxes[i].ForeColor = System.Drawing.Color.Red;
+                        break;
+                    } 
+                }                
+            }
+            else if(previous.isCurrentMonth() == true){
+                for(int i=0; i<current.firstOfMonth; i++){
+                    if(displayDays[i].isToday() == true) boxes[i].ForeColor = System.Drawing.Color.Red;
+                }  
+            }
         }
         private void Month_Click(object sender, EventArgs e){}
 
@@ -113,16 +134,9 @@ namespace Event_Planner
             EventCreator window = new EventCreator(this, currentMonth);
             window.Show();
         }
-
-        private void weekButton_Click(object sender, EventArgs e){
-            Weekform weekform = new Weekform(this, currentMonth);
-            weekform.Show();
-        }
-
         public String getCurrentMonth(DateTime dt){
             return dt.ToString("MMM")+dt.ToString("yyyy");
         }
-
         public Dictionary<String, Month>  getMonthDict(){
             return months;
         }
@@ -143,7 +157,7 @@ namespace Event_Planner
                 for(int i=0; i<events.Count; i++){
                     string[] items = events[i].Split(",");
                     for(int x=0;x<items.Length;x++){
-                        string[] split = items[x].Split(" ");
+                        string[] split = items[x].Split("|");
                         if(split[0] == ""){
                             continue;
                         }
